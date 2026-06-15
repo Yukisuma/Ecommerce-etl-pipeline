@@ -1,11 +1,11 @@
-# 🛍️ E-Commerce Data Pipeline
+#  E-Commerce Data Pipeline
 
 > A **production-grade ETL pipeline** for fashion & lifestyle e-commerce brands.
 > Simulates real-world data engineering workflows — CSV ingestion → cleaning → PostgreSQL → automated reports.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 ecommerce-pipeline/
@@ -33,7 +33,7 @@ ecommerce-pipeline/
 
 ---
 
-## ⚙️ Setup
+##  Setup
 
 ### 1. Clone & Install Dependencies
 
@@ -65,7 +65,7 @@ psql -U postgres -c "CREATE DATABASE ecommerce_db;"
 
 ---
 
-## 🚀 Running the Pipeline
+##  Running the Pipeline
 
 ### Step 1 — Generate Sample Data
 
@@ -91,10 +91,10 @@ python src/pipeline.py
 This runs all 4 phases:
 
 ```
-📥 EXTRACT   → Reads & validates CSV files
-⚙️ TRANSFORM  → Cleans data, flags issues, computes revenue
-📦 LOAD      → Upserts into PostgreSQL (idempotent, safe to re-run)
-📄 REPORT    → Generates HTML report with charts → reports/
+EXTRACT   → Reads & validates CSV files
+TRANSFORM  → Cleans data, flags issues, computes revenue
+LOAD      → Upserts into PostgreSQL (idempotent, safe to re-run)
+REPORT    → Generates HTML report with charts → reports/
 ```
 
 ### Other Run Modes
@@ -109,7 +109,7 @@ python src/pipeline.py --no-report
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 python -m pytest tests/ -v
@@ -126,7 +126,7 @@ python -m pytest tests/ -v
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ```
 dim_products      — Product catalog (dimension table)
@@ -140,7 +140,7 @@ The schema follows a **star schema** design — standard in data warehousing —
 
 ---
 
-## 📊 Generated Report
+## Generated Report
 
 After running the pipeline, open the report in your browser:
 
@@ -149,18 +149,18 @@ open reports/latest_report.html
 ```
 
 The report includes:
-- 📈 **KPI Dashboard** — Revenue, Orders, Units, AOV, Discounts
-- 📉 **30-day Revenue Trend** (line chart)
-- 📊 **Daily Orders Volume** (bar chart)
-- 🏷️ **Revenue by Category** (horizontal bar)
-- 🥧 **Revenue by Channel** (pie chart)
-- 🌍 **Revenue by Country** (bar chart)
-- 🏆 **Top 10 Products table**
-- 🔄 **Order Status & Returns breakdown**
+-  **KPI Dashboard** — Revenue, Orders, Units, AOV, Discounts
+-  **30-day Revenue Trend** (line chart)
+-  **Daily Orders Volume** (bar chart)
+-  **Revenue by Category** (horizontal bar)
+-  **Revenue by Channel** (pie chart)
+-  **Revenue by Country** (bar chart)
+-  **Top 10 Products table**
+-  **Order Status & Returns breakdown**
 
 ---
 
-## 🛠️ Skills Demonstrated
+##  Skills Demonstrated
 
 | Skill | Implementation |
 |-------|---------------|
@@ -175,7 +175,7 @@ The report includes:
 
 ---
 
-## 🔁 Re-Running the Pipeline
+##  Re-Running the Pipeline
 
 The pipeline is **fully idempotent** — you can safely re-run it on the same data:
 - `INSERT ON CONFLICT DO UPDATE` handles duplicates gracefully
@@ -184,15 +184,15 @@ The pipeline is **fully idempotent** — you can safely re-run it on the same da
 
 ---
 
-## 📝 Logs
+##  Logs
 
 All pipeline runs are logged to `logs/pipeline.log`:
 
 ```
-2024-06-15 18:30:01  INFO      🚀 Pipeline started
-2024-06-15 18:30:01  INFO      📥 EXTRACT PHASE — Reading Raw CSV Files
-2024-06-15 18:30:02  INFO        📂 Loaded 'orders.csv' → 3,000 rows
-2024-06-15 18:30:03  WARNING     ⚠️  [orders] Rows dropped (zero qty): 12
-2024-06-15 18:30:05  INFO      ✅ Load phase complete.
-2024-06-15 18:30:08  INFO      🎉 Pipeline completed in 7.2s
+2024-06-15 18:30:01  INFO       Pipeline started
+2024-06-15 18:30:01  INFO       EXTRACT PHASE — Reading Raw CSV Files
+2024-06-15 18:30:02  INFO       Loaded 'orders.csv' → 3,000 rows
+2024-06-15 18:30:03  WARNING       [orders] Rows dropped (zero qty): 12
+2024-06-15 18:30:05  INFO      Load phase complete.
+2024-06-15 18:30:08  INFO       Pipeline completed in 7.2s
 ```
